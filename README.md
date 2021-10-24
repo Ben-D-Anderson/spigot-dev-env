@@ -1,6 +1,6 @@
 # spigot-dev-env
 
-This repository provides scripts to compile all Spigot and CraftBukkit versions using Spigot's BuildTools - which will also install them all to your local maven repository (with NMS API included).
+This repository provides scripts to automatically compile all Spigot and CraftBukkit versions using Spigot's BuildTools - which will also install them all to your local maven repository (with NMS API included).
 The `servinstall.py` script will also create servers for all Minecraft versions and the `pluginstall.py` script can be used to install a Minecraft plugin jar to the `plugins` folder of all the servers.
 
 ## Usage
