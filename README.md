@@ -41,7 +41,7 @@ You can now build all the Spigot and Craftbukkit versions referenced in the `con
 ```bash
 python3 servinstall.py
 ```
-This command will create Minecraft servers using every Spigot version it installs in the `servers` directory.
+This command will create Minecraft servers for all installed Spigot versions, and place them in the `servers` directory - this can make testing a multi-version plugin much easier.
 It will also install the Spigot and CraftBukkit versions with the NMS API to your local maven repository so they can be easily referenced in your pom.xml during development.
 See the following example for 1.8:
 ```xml
