@@ -58,6 +58,7 @@ See the following example for 1.8:
     <scope>provided</scope>
 </dependency>
 ```
+The `servinstall.py` script uses BuildTools to compile Spigot and CraftBukkit and can take a long time as a result, on my machine it took a total of ~50 minutes for all versions to be installed.
 
 A script has also been provided in this repository to effortlessly deploy a Minecraft plugin to all of the generated servers using the following command:
 ```bash
