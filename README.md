@@ -64,3 +64,10 @@ A script has also been provided in this repository to effortlessly deploy a Mine
 ```bash
 python3 pluginstall.py <plugin_jar_path>
 ```
+The `pluginstall.py` script simply copies the plugin specified into the `plugins` folder of each folder in the `servers` folder.
+
+A script has also been provided in this repository to effortlessly remove a Minecraft plugin from all of the generated servers using the following command:
+```bash
+python3 plugdelete.py <plugin_jar_name>
+```
+The `plugdelete.py` script simply deletes the plugin specified from the `plugins` folder of each folder in the `servers` folder.
