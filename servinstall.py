@@ -19,11 +19,17 @@ def create_dir(directory, base_dir='.'):
 
 def compile_spigot_craftbukkit(directory, mc_version, java_versions):
     java_path = java_versions[mc_version['java_version']]
+    if not os.path.exists(java_path):
+        print('Java executable could not be located as defined in the config (' + java_path + '). Please update the "java_versions" section of the config with paths to your java installations.')
+        exit()
     minecraft_version = mc_version['minecraft_version']
     run([java_path, '-jar', 'BuildTools.jar', '--compile', 'craftbukkit', '--compile', 'spigot', '--rev', minecraft_version], stdout=DEVNULL, stdin=DEVNULL, stderr=STDOUT, cwd=directory)
 
 def create_server(directory, mc_version, java_versions):
     java_path = java_versions[mc_version['java_version']]
+    if not os.path.exists(java_path):
+        print('Java executable could not be located as defined in the config (' + java_path + '). Please update the "java_versions" section of the config with paths to your java installations.')
+        exit()
     server_jar = os.path.join(directory, 'spigot-' + mc_version['minecraft_version'] + '.jar')
     run([java_path, '-jar', server_jar, 'nogui'], stdout=DEVNULL, stderr=STDOUT, cwd=directory, input=b'stop\n')
 
@@ -47,6 +53,4 @@ for mc_version in mc_versions:
     create_server(directory, mc_version, java_versions)
     print('[' + mc_version['nms_version'] + '] Installation Complete')
     print('')
-print('--------------------------------------------------------')
-print('Spigot Development Environment Installation Finished!')
-print('--------------------------------------------------------')
+print('Installation Finished!')
