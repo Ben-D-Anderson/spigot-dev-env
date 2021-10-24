@@ -1,0 +1,65 @@
+# spigot-dev-env
+
+This repository provides scripts to compile all Spigot and CraftBukkit versions using Spigot's BuildTools - which will also install them all to your local maven repository (with NMS API included).
+The `servinstall.py` script will also create servers for all Minecraft versions and the `pluginstall.py` script can be used to install a Minecraft plugin jar to the `plugins` folder of all the servers.
+
+## Usage
+First clone this git repository to your computer by running the following command:
+```bash
+git clone https://github.com/Ben-D-Anderson/spigot-dev-env.git
+```
+
+Navigate into the created folder `spigot-dev-env` with the following command:
+```bash
+cd spigot-dev-env
+```
+
+Ensure you follow the necessary steps for your operating system as described by the [Spigot BuildTools prerequisites](https://www.spigotmc.org/wiki/buildtools/#prerequisites).
+
+Open `config.json` and set the paths to the java executable files on your system for each java version in the `java_versions` section.
+Java 8 is required to build versions up to (but not including) 1.17 and Java 16 is required for all higher versions (including 1.17).
+
+Example for Windows:
+```json
+"java_versions":{
+  "8":"C:\\Windows\\Program Files\\Java\\jre1.8.0_221\\bin\\java.exe",
+  "16":"C:\\Windows\\Program Files\\Java\\jre16.0.2\\bin\\java.exe"
+}
+```
+
+Example for Unix:
+```json
+"java_versions":{
+  "8":"/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java",
+  "16":"/usr/lib/jvm/java-16-openjdk-amd64/bin/java"
+}
+```
+
+Paths will vary for each user so make sure you locate your Java installations and update the `config.json` accordingly.
+
+You can now build all the Spigot and Craftbukkit versions referenced in the `config.yml` under the `mc_versions` section using the following command:
+```bash
+python3 servinstall.py
+```
+This command will create Minecraft servers using every Spigot version it installs in the `servers` directory.
+It will also install the Spigot and CraftBukkit versions with the NMS API to your local maven repository so they can be easily referenced in your pom.xml during development.
+See the following example for 1.8:
+```xml
+<dependency>
+    <groupId>org.bukkit</groupId>
+    <artifactId>craftbukkit</artifactId>
+    <version>1.8-R0.1-SNAPSHOT</version>
+    <scope>provided</scope>
+</dependency>
+<dependency>
+    <groupId>org.spigotmc</groupId>
+    <artifactId>spigot-api</artifactId>
+    <version>1.8-R0.1-SNAPSHOT</version>
+    <scope>provided</scope>
+</dependency>
+```
+
+A script has also been provided in this repository to effortlessly deploy a Minecraft plugin to all of the generated servers using the following command:
+```bash
+python3 pluginstall.py <plugin_jar_path>
+```
