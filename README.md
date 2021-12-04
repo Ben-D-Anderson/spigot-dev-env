@@ -17,13 +17,14 @@ cd spigot-dev-env
 Ensure you follow the necessary steps for your operating system as described by the [Spigot BuildTools prerequisites](https://www.spigotmc.org/wiki/buildtools/#prerequisites).
 
 Open `config.json` and set the paths to the java executable files on your system for each java version in the `java_versions` section.
-Java 8 is required to build versions up to (but not including) 1.17 and Java 16 is required for all higher versions (including 1.17).
+Java 8 is required to build versions up to (but not including) 1.17, Java 16 is required for version 1.17, and Java 17 is required for version 1.18.
 
 Example for Windows:
 ```json
 "java_versions":{
   "8":"C:\\Windows\\Program Files\\Java\\jre1.8.0_221\\bin\\java.exe",
-  "16":"C:\\Windows\\Program Files\\Java\\jre16.0.2\\bin\\java.exe"
+  "16":"C:\\Windows\\Program Files\\Java\\jre16.0.2\\bin\\java.exe",
+  "17":"C:\\Windows\\Program Files\\Java\\jre17.2.1\\bin\\java.exe"
 }
 ```
 
@@ -31,7 +32,8 @@ Example for Unix:
 ```json
 "java_versions":{
   "8":"/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java",
-  "16":"/usr/lib/jvm/java-16-openjdk-amd64/bin/java"
+  "16":"/usr/lib/jvm/java-16-openjdk-amd64/bin/java",
+  "17":"/usr/lib/jvm/java-17-openjdk-amd64/bin/java"
 }
 ```
 
@@ -58,7 +60,7 @@ See the following example for 1.8:
     <scope>provided</scope>
 </dependency>
 ```
-The `servinstall.py` script uses BuildTools to compile Spigot and CraftBukkit and can take a long time as a result, on my machine it took a total of ~50 minutes for all versions to be installed.
+The `servinstall.py` script uses BuildTools to compile Spigot and CraftBukkit and can take a long time as a result, on my machine it took a total of ~55 minutes for all versions to be installed.
 
 A script has also been provided in this repository to effortlessly deploy a Minecraft plugin to all of the generated servers using the following command:
 ```bash
