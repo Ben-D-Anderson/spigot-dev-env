@@ -83,6 +83,11 @@
             "nms_version":"1_17_R1",
             "minecraft_version":"1.17.1",
             "java_version":"16"
-        }
+        },
+	{
+	    "nms_version":"1_18_R1",
+            "minecraft_version":"1.18.1",
+            "java_version":"16"
+	}
     ]
 }
